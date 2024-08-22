@@ -3,8 +3,8 @@ import sys
 def add(numbers):
     if not numbers:
         return 0
-    
-    seperated_numbers = [int(i) for i in numbers.split(',')]
+
+    seperated_numbers = [int(i) for num in numbers.split('\n') for i in num.split(',')]
 
     return sum(seperated_numbers)
 

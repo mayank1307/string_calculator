@@ -18,6 +18,12 @@ class Test(unittest.TestCase):
         self.assertEqual(calculator.add('9,11,12'), 32)
         self.assertEqual(calculator.add('0,0,0'), 0)
 
+    def test_with_newline(self):
+        self.assertEqual(calculator.add('1\n2'), 3)
+        self.assertEqual(calculator.add('1\n2,4'), 7)
+        self.assertEqual(calculator.add('5,0\n3'), 8)
+        self.assertEqual(calculator.add('9\n11\n12,9\n11\n12,9\n11\n12,9\n11\n12'), 128)
+        self.assertEqual(calculator.add('0,0\n0'), 0)
 
 if __name__ == '__main__':
     unittest.main()
