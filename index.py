@@ -1,10 +1,24 @@
-import sys
+import sys, re
+
+def get_numbers_from_string(input_string):
+    if input_string.startswith('//'):
+        delimiter, numbers = input_string.split('\n',1)
+        return re.split(re.escape(delimiter[2:]) + r'|\n', numbers)
+
+    else:
+        delimiter_pattern = ',|\n'
+        return re.split(delimiter_pattern, input_string)
 
 def add(numbers):
     if not numbers:
         return 0
 
-    seperated_numbers = [int(i) for num in numbers.split('\n') for i in num.split(',')]
+    seperated_string = get_numbers_from_string(numbers)
+
+    if not seperated_string or not len(seperated_string):
+        return 0
+
+    seperated_numbers = [int(i) for i in seperated_string]
 
     return sum(seperated_numbers)
 

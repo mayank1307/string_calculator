@@ -25,5 +25,11 @@ class Test(unittest.TestCase):
         self.assertEqual(calculator.add('9\n11\n12,9\n11\n12,9\n11\n12,9\n11\n12'), 128)
         self.assertEqual(calculator.add('0,0\n0'), 0)
 
+    def test_with_custom_delimiters(self):
+        self.assertEqual(calculator.add( "//;\n1;2" ), 3)
+        self.assertEqual(calculator.add( "//;\n1;2;3;4;5" ), 15)
+        self.assertEqual(calculator.add( "//;\n1" ), 1)
+        self.assertEqual(calculator.add( "//;\n0" ), 0)
+
 if __name__ == '__main__':
     unittest.main()
