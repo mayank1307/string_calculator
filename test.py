@@ -30,6 +30,7 @@ class Test(unittest.TestCase):
         self.assertEqual(calculator.add( "//;\n1;2;3;4;5" ), 15)
         self.assertEqual(calculator.add( "//;\n1" ), 1)
         self.assertEqual(calculator.add( "//;\n0" ), 0)
+        self.assertEqual(calculator.add( "//;\n" ), 0)
 
 if __name__ == '__main__':
     unittest.main()

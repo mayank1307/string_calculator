@@ -3,6 +3,8 @@ import sys, re
 def get_numbers_from_string(input_string):
     if input_string.startswith('//'):
         delimiter, numbers = input_string.split('\n',1)
+        if not numbers:
+            return []
         return re.split(re.escape(delimiter[2:]) + r'|\n', numbers)
 
     else:
