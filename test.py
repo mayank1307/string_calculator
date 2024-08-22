@@ -32,5 +32,16 @@ class Test(unittest.TestCase):
         self.assertEqual(calculator.add( "//;\n0" ), 0)
         self.assertEqual(calculator.add( "//;\n" ), 0)
 
+    def test_negatives(self):
+        tests = [
+            ('-1', 'Negative numbers not allowed: [-1]'),
+            ('-1\n-2,4', 'Negative numbers not allowed: [-1, -2]'),
+            ('//;\n-1;2;-3;4;-5', 'Negative numbers not allowed: [-1, -3, -5]')
+        ]
+        for test, error in tests:
+            with self.assertRaises(ValueError) as context:
+                calculator.add(test)
+            self.assertEqual(str(context.exception), error)
+
 if __name__ == '__main__':
     unittest.main()
